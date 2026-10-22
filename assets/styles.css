@@ -220,8 +220,7 @@ a { color: inherit; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.tag__dot { width: 8px; height: 8px; background: var(--rust); border-radius: 50%; animation: pulse 2.6s infinite; }
-@keyframes pulse { 0%, 70% { opacity: 1; } 85% { opacity: 0.2; } 100% { opacity: 1; } }
+.tag__dot { width: 8px; height: 8px; background: var(--rust); border-radius: 50%; }
 
 .hero__title {
   font-family: var(--display);
@@ -599,13 +598,13 @@ a { color: inherit; }
   margin-top: clamp(28px, 4vw, 44px);
 }
 .rule {
-  padding: 20px;
+  padding: 18px 20px 20px;
   border: 2px solid var(--ink);
+  border-top: 8px solid var(--rust);
   background: var(--paper);
-  border-left: 8px solid var(--rust);
 }
-.rule:nth-child(2) { border-left-color: var(--euca); }
-.rule:nth-child(3) { border-left-color: var(--sun); }
+.rule:nth-child(2) { border-top-color: var(--euca); }
+.rule:nth-child(3) { border-top-color: var(--sun); }
 .rule .mono { color: var(--ink-soft); }
 .rule p { margin: 6px 0 0; font-size: 0.95rem; }
 
@@ -946,8 +945,8 @@ a { color: inherit; }
   .btn--huge { padding: 16px 24px; font-size: 1.3rem; }
   .fights { font-size: 0.88rem; }
   .fights td { padding: 12px 10px 12px 0; }
-  .pass__stamp { right: -6px; top: -10px; }
-  .pass { transform: none; }
+  .pass__stamp { right: 2px; top: -12px; }
+  .pass { transform: none; padding: 12px; box-shadow: 5px 5px 0 var(--ink); }
   .hero__line--big { text-shadow: 4px 4px 0 var(--ink); }
 }
 
