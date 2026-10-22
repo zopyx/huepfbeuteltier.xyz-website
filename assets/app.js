@@ -16,7 +16,7 @@
 
   /* ---------- reveal ---------- */
   const targets = document.querySelectorAll(
-    ".head, .article, .law, .letter, .fights, .record, .sparring, .plan, .rule, .calc, .stat, .quote, .outro__inner"
+    ".head, .article, .law, .letter, .fights, .record, .sparring, .plan, .rule, .calc, .stat, .quote, .outro__inner, .pull, .check, .vs, .excuse, .closing"
   );
   if (reduceMotion || !("IntersectionObserver" in window)) {
     targets.forEach((el) => el.classList.add("is-in"));
@@ -237,6 +237,44 @@
         backBtn.animate(
           [{ transform: "translateX(0)" }, { transform: "translateX(-6px)" }, { transform: "translateX(6px)" }, { transform: "translateX(0)" }],
           { duration: 240, easing: "ease-in-out" }
+        );
+      }
+    });
+  }
+
+  /* ---------- Ausreden-Automat ---------- */
+  const excuseText = document.getElementById("excuseText");
+  const excuseBtn = document.getElementById("excuseBtn");
+
+  const excuses = [
+    "„Das war ein Einzelfall. Und der Einzelfall hat eine Partei.“",
+    "„Wir haben das nur zitiert. Aus einem Buch. Von uns.“",
+    "„Man wird doch noch fragen dürfen, ob die Erde eine Kugel ist.“",
+    "„Das war Ironie. Und wenn nicht, war es eine Meinung.“",
+    "„Wir sind konservativ. Deshalb ändern wir alles zurück.“",
+    "„Die Brandmauer ist linksgrün versifft. Wir nennen sie jetzt Lüftungsgitter.“",
+    "„Wir sind bürgerlich. Deshalb stehen wir vor Gericht wie ein Bürger.“",
+    "„Wir haben nichts gegen Ausländer. Nur gegen die, die hier sind.“",
+    "„Das steht so nicht im Programm. Das steht zwischen den Zeilen.“",
+    "„Die AfD ist keine Gefahr. Sie ist eine Chance. Für die AfD.“",
+    "„Wir sind Opfer. Von Umfragen. Von Medien. Von der Wirklichkeit.“",
+    "„Wir wollten nur über Missstände reden. Dann waren wir der Missstand.“",
+    "„Das war keine Rede, das war ein Zitat aus der Zukunft.“",
+    "„Wir sagen ja nur, was sich viele denken. Nämlich wir.“"
+  ];
+
+  let excuseIndex = Math.floor(Math.random() * excuses.length);
+
+  if (excuseBtn) {
+    excuseBtn.addEventListener("click", () => {
+      let next = Math.floor(Math.random() * excuses.length);
+      if (next === excuseIndex) next = (next + 1) % excuses.length;
+      excuseIndex = next;
+      if (excuseText) {
+        excuseText.textContent = excuses[next];
+        excuseText.animate(
+          [{ opacity: 0.25, transform: "translateY(6px)" }, { opacity: 1, transform: "translateY(0)" }],
+          { duration: 260, easing: "ease-out" }
         );
       }
     });
